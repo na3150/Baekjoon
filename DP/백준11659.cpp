@@ -3,20 +3,23 @@
 using namespace std;
 
 int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
 
 	int N, M;
 	cin >> N >> M;
-	vector<long> dp(N + 1); //d[n] = 1 ~ n 까지의 합
+	vector<long> dp(N + 1);
 	dp[0] = 0;
-	for (int i = 1; i <= N; i++) { //입력받으면서 누적합 구하기
+	for (int i = 1; i <= N; i++) {
 		long num;
 		cin >> num;
 		dp[i] = dp[i - 1] + num;
 	}
 	for (int i = 0; i < M; i++) {
-		int start, end;
-		cin >> start >> end;
-		cout << dp[end] - dp[start - 1] << endl;
+		int s, e;
+		cin >> s >> e;
+		cout << dp[e] - dp[s - 1] << '\n';
 	}
 	return 0;
 }
